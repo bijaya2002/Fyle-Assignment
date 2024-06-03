@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us Page</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <h1>AWARD WINNING</h1>
+        <h2>DIGITAL MARKETING AGENCY</h2>
+    </header>
+    
+    <main>
+        <p>Morbi sed lacus nec risus finibus feugiat et fermentum nibh. Pellentesque vitae ante at elit fringilla ac at purus, Morbi sed lacus nec risus finibus feugiat et fermentum.</p>
+        <img src="IMG_20240601_124056.png" alt="Descriptive Image">
+    </main>
+    <footer>
+        <button id="contact-us-button">Contact Us</button>
+    </footer>
+
+    <div id="popup-form" class="popup-form">
+        <div class="popup-content">
+            <span class="close-button" id="close-button">&times;</span>
+            <h2>Talk to us</h2>
+            <form
+            action="https://getform.io/f/rbeqxzpb"
+            method="post"
+            enctype="multipart/form-data"
+            >
+                <label for="email">Work email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label>
+                    <input type="checkbox" id="agree" name="agree" required> I agree to Fyle's terms and conditions,and provide consent to send me communication.
+                </label><br>
+                <button type="submit">Contact Us</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('contact-us-button').addEventListener('click', function() {
+            document.getElementById('popup-form').style.display = 'block';
+        });
+
+        document.getElementById('close-button').addEventListener('click', function() {
+            document.getElementById('popup-form').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('popup-form')) {
+                document.getElementById('popup-form').style.display = 'none';
+            }
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('popup-form')) {
+                document.getElementById('popup-form').style.display = 'none';
+            }
+        });
+
+        document.getElementById('agree').addEventListener('change', function() {
+            document.getElementById('submit-button').disabled = !this.checked;
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+
+            const formData = {
+                firstName,
+                lastName,
+                email,
+                message
+            };
+            fetch('https://your-endpoint-url.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Form submitted successfully!');
+                document.getElementById('popup-form').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form.');
+            });
+        });
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slides img');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        const slidesContainer = document.querySelector('.slides');
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+        const offset = -currentIndex * 100;
+        slidesContainer.style.transform = `translateX(${offset}%)`;
+    }
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    setInterval(nextSlide, 3000);
+    const readMoreButtons = document.querySelectorAll('.read-more-button');
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            window.open('https://fylehq.com', '_blank');
+        });
+    });
+
+
+</script>
+
+</main>
+<section id="what-we-do">
+    <h2>WHAT WE DO</h2>
+    <h3> SERVICES PROVIDED FOR YOU</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula, sapien sit amet fermentum efficitur, arcu lacus pulvinar mauris, nec viverra ex tortor at sapien. 
+        Phasellus tristique est sit amet est volutpat, at vehicula metus dictum.</p>
+    <div class="slider">
+        <div class="slides">
+            <div class="slides">
+            <img src="IMG_20240601_233320.png" alt="Slide 1">
+            </div>
+            <div class="slide">
+            <img src="IMG_20240601_233337.png" alt="Slide 2">
+            </div>
+            <div class="slide">
+            <img src="IMG_20240601_233401.png" alt="Slide 3">
+            </div>
+            <div class="slide">
+            <img src="IMG_20240601_233320.png" alt="Slide 1">
+            <button class="read-more-button">Read More</button>
+            <a href="https://fylehq.com" target="_blank" class="read-more-button">Read More</a>
+            </div>
+
+        <div class="navigation-dots"></div>
+        <script src="script.js"></script>
+    </section>
+    <section id="Our-Project">
+        <h1>Our Project</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula, sapien sit amet fermentum efficitur, arcu lacus pulvinar mauris, nec viverra ex tortor at sapien.
+             Phasellus tristique est sit amet est volutpat, at vehicula metus dictum.</p>
+    <div class="container">
+        <div class="images">
+            <img id="image1" src="Untitled_design-002.jpg" alt="Image 1">
+            <img id="image2" src="istockphoto-693630980-2048x2048.jpg" alt="Image 2">
+            <img id="image3" src="istockphoto-1375269110-612x612.jpg" alt="Image 3">
+        </div>
+        <div class="content">
+            <div onclick="changeImages('Untitled_designjp-002.jpg')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Nulla vehicula, sapien sit amet fermentum efficitur, 
+                arcu lacus pulvinar mauris, nec viverra ex tortor at sapien. 
+                Phasellus tristique est sit amet est volutpat, at vehicula metus dictum.</div>
+            <div onclick="changeImages('istockphoto-693630980-2048x2048.jpg')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Nulla vehicula, sapien sit amet fermentum efficitur,
+                 arcu lacus pulvinar mauris, nec viverra ex tortor at sapien. 
+                Phasellus tristique est sit amet est volutpat, at vehicula metus dictum.</div>
+            <div onclick="changeImages('istockphoto-1375269110-612x612.jpg')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Nulla vehicula, sapien sit amet fermentum efficitur,
+                 arcu lacus pulvinar mauris, nec viverra ex tortor at sapien. 
+                Phasellus tristique est sit amet est volutpat, at vehicula metus dictum.</div>
+        </div>
+    </div>
+    
+    </section>
+
+
+    <section id="Expert Growth">
+    <h1>EXPERT GROWTHS</h1>
+    <p>OUR COMPANY GROWTH</p>
+    <div class="card-container">
+        <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
+            <h2>199+</h2>
+            <p>Satisfied Customers</p>
+        </div>
+        <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
+            <h2>1591+</h2>
+            <p>Days Of Operations</p>
+        </div>
+        <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
+            <h2>283+</h2>
+            <p>Complete Project</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</section>
+
+
+</body>
+</html>
